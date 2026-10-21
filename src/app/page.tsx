@@ -37,8 +37,7 @@ export default async function PaginaInicio({ searchParams }: Props) {
         <div className="mt-2 h-1 w-16 bg-museo-acento" />
         {!q && (
           <p className="mt-4 max-w-2xl text-museo-texto/60">
-            Explora las piezas del museo en 3D junto a su ficha técnica
-            oficial.
+            Explora las piezas del museo en 3D junto a su ficha técnica oficial.
           </p>
         )}
 

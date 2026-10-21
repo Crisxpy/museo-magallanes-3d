@@ -1,10 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/app/**/*.{ts,tsx}",
-    "./src/components/**/*.{ts,tsx}",
-  ],
+  content: ["./src/app/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -18,12 +15,12 @@ const config: Config = {
 
           // Paleta clonada del sitio oficial museodemagallanes.gob.cl
           // (medida directamente sobre una captura de /multimedia)
-          flagAzul: "#0F69B5",   // franja superior, azul institucional
-          flagRojo: "#EB3D45",   // franja superior, rojo institucional
-          negro: "#000000",     // barra de navegación
-          acento: "#E0701E",    // línea bajo títulos, enlaces activos
+          flagAzul: "#0F69B5", // franja superior, azul institucional
+          flagRojo: "#EB3D45", // franja superior, rojo institucional
+          negro: "#000000", // barra de navegación
+          acento: "#E0701E", // línea bajo títulos, enlaces activos
           acentoClaro: "#FFA11B", // ícono circular de aviso
-          fondo: "#FFFDFB",     // fondo cálido de cajas de aviso
+          fondo: "#FFFDFB", // fondo cálido de cajas de aviso
         },
       },
       fontFamily: {

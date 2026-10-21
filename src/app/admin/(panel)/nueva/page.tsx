@@ -177,9 +177,8 @@ export default function PaginaNuevaPieza() {
             Revisar ficha antes de publicar
           </h2>
           <p className="mt-1 text-sm text-museo-texto/70">
-            Este es el resultado del prescrapper. Revisa manualmente los
-            datos, corrige lo necesario y completa los campos marcados como
-            pendientes.
+            Este es el resultado del prescrapper. Revisa manualmente los datos,
+            corrige lo necesario y completa los campos marcados como pendientes.
           </p>
         </div>
         <button
@@ -193,8 +192,8 @@ export default function PaginaNuevaPieza() {
       {camposFaltantesPendientes.length > 0 && (
         <div className="mt-6 rounded-md border border-amber-300 bg-amber-50 p-4">
           <p className="text-sm font-semibold text-amber-800">
-            Campos que SURDOC no entregó — revisa si corresponde
-            completarlos manualmente:
+            Campos que SURDOC no entregó — revisa si corresponde completarlos
+            manualmente:
           </p>
           <div className="mt-2 flex flex-wrap gap-2">
             {camposFaltantesPendientes.map((campo) => (
@@ -218,7 +217,11 @@ export default function PaginaNuevaPieza() {
           <div className="flex aspect-square items-center justify-center overflow-hidden rounded-md border border-museo-medio/20 bg-museo-crema">
             {imagenUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={imagenUrl} alt="" className="h-full w-full object-contain" />
+              <img
+                src={imagenUrl}
+                alt=""
+                className="h-full w-full object-contain"
+              />
             ) : (
               <span className="text-xs text-museo-texto/50">
                 No se encontró fotografía

@@ -50,7 +50,9 @@ export async function POST(request: Request) {
 
   try {
     const resultado = await scrapearSurdoc(surdocUrl);
-    const sketchfabModelId = sketchfabUrl ? extraerIdSketchfab(sketchfabUrl) : null;
+    const sketchfabModelId = sketchfabUrl
+      ? extraerIdSketchfab(sketchfabUrl)
+      : null;
 
     return NextResponse.json({ ...resultado, sketchfabModelId });
   } catch (error) {

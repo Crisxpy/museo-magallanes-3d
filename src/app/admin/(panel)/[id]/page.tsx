@@ -103,7 +103,8 @@ export default function PaginaGestionarPieza() {
     }
   }
 
-  if (cargando) return <p className="text-sm text-museo-texto/60">Cargando...</p>;
+  if (cargando)
+    return <p className="text-sm text-museo-texto/60">Cargando...</p>;
   if (!pieza) return <p className="text-sm text-red-600">{error}</p>;
 
   return (
@@ -169,13 +170,21 @@ export default function PaginaGestionarPieza() {
 
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div>
-          <p className="mb-2 text-sm font-semibold text-museo-oscuro">Fotografía</p>
+          <p className="mb-2 text-sm font-semibold text-museo-oscuro">
+            Fotografía
+          </p>
           <div className="flex aspect-square items-center justify-center overflow-hidden rounded-md border border-museo-medio/20 bg-museo-crema">
             {pieza.imagen_url ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={pieza.imagen_url} alt="" className="h-full w-full object-contain" />
+              <img
+                src={pieza.imagen_url}
+                alt=""
+                className="h-full w-full object-contain"
+              />
             ) : (
-              <span className="text-xs text-museo-texto/50">Sin fotografía</span>
+              <span className="text-xs text-museo-texto/50">
+                Sin fotografía
+              </span>
             )}
           </div>
         </div>
@@ -209,7 +218,9 @@ export default function PaginaGestionarPieza() {
           ))}
 
           <button
-            onClick={() => guardarCambios({ ficha, titulo: titulo.trim() || null })}
+            onClick={() =>
+              guardarCambios({ ficha, titulo: titulo.trim() || null })
+            }
             disabled={guardando}
             className="mt-2 rounded-md bg-museo-oscuro px-5 py-2.5 text-sm font-semibold text-white hover:bg-museo-medio disabled:opacity-60"
           >

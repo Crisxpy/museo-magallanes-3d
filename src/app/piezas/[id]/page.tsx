@@ -22,7 +22,8 @@ export default async function PaginaPieza({ params }: Props) {
   if (!pieza) notFound();
 
   const titulo = pieza.titulo || pieza.ficha["Título"] || "Pieza sin título";
-  const institucion = pieza.ficha["Institución"] || "Museo Regional de Magallanes";
+  const institucion =
+    pieza.ficha["Institución"] || "Museo Regional de Magallanes";
 
   return (
     <main className="min-h-screen bg-white">

@@ -12,7 +12,7 @@ de cada pieza (SURDOC), con panel de administración.
   este archivo reemplaza al antiguo `middleware.ts`).
 - **Supabase** (Postgres + Auth) — base de datos gratuita y persistente para
   las piezas, y autenticación para el (único) usuario administrador.
-- **cheerio** — motor del *prescrapper* que lee las fichas públicas de
+- **cheerio** — motor del _prescrapper_ que lee las fichas públicas de
   SURDOC en el servidor.
 
 ## 1. Crear el proyecto de Supabase
@@ -53,7 +53,7 @@ npm run dev
 ## 4. Cómo se usa el panel
 
 1. **Agregar pieza** (`/admin/nueva`): pega el enlace de Sketchfab y el
-   enlace de SURDOC. El sistema ejecuta el *prescrapper*, que completa
+   enlace de SURDOC. El sistema ejecuta el _prescrapper_, que completa
    automáticamente la ficha oficial y la fotografía.
 2. El administrador **revisa manualmente** la ficha obtenida, incluyendo
    un campo de **Título** siempre editable (se precarga si SURDOC lo

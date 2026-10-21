@@ -45,7 +45,11 @@ export function AdminNav() {
               {enlace.label}
             </Link>
           ))}
-          <Link href="/" className="text-white/60 hover:text-white" target="_blank">
+          <Link
+            href="/"
+            className="text-white/60 hover:text-white"
+            target="_blank"
+          >
             Ver sitio público
           </Link>
           <button

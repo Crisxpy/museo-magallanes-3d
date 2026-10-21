@@ -76,25 +76,34 @@ function extraerImagen($: cheerio.CheerioAPI): string | null {
   $("img").each((_, el) => {
     if (candidata) return;
     const src = $(el).attr("src") || "";
-    if (["/files/", "/default/", "/colecciones/"].some((p) => src.includes(p))) {
+    if (
+      ["/files/", "/default/", "/colecciones/"].some((p) => src.includes(p))
+    ) {
       candidata = src;
     }
   });
   return candidata ? normalizarUrlImagen(candidata) : null;
 }
 
-function extraerPorFilaGenerica($: cheerio.CheerioAPI, ficha: Record<string, string>) {
+function extraerPorFilaGenerica(
+  $: cheerio.CheerioAPI,
+  ficha: Record<string, string>
+) {
   $("div, li").each((_, el) => {
     const clase = $(el).attr("class") || "";
     if (!/field|item-row|data-row|col-/.test(clase)) return;
 
     const etiquetaEl = $(el)
       .find("div, span, label, strong, b, h4, h5")
-      .filter((_, e) => /label|title|name|attribute|bold/.test($(e).attr("class") || ""))
+      .filter((_, e) =>
+        /label|title|name|attribute|bold/.test($(e).attr("class") || "")
+      )
       .first();
     const valorEl = $(el)
       .find("div, span, p, ul")
-      .filter((_, e) => /item|value|content|data/.test($(e).attr("class") || ""))
+      .filter((_, e) =>
+        /item|value|content|data/.test($(e).attr("class") || "")
+      )
       .first();
 
     if (etiquetaEl.length && valorEl.length && etiquetaEl[0] !== valorEl[0]) {
@@ -117,13 +126,24 @@ function extraerDeTablas($: cheerio.CheerioAPI, ficha: Record<string, string>) {
       .each((_, fila) => {
         const cols = $(fila).find("th, td");
         if (cols.length === 2) {
-          const clave = $(cols[0]).text().replace(/\s+/g, " ").trim().replace(/:$/, "");
+          const clave = $(cols[0])
+            .text()
+            .replace(/\s+/g, " ")
+            .trim()
+            .replace(/:$/, "");
           const valor = $(cols[1]).text().replace(/\s+/g, " ").trim();
           if (clave && valor) ficha[clave] = valor;
         } else if (cols.length > 2) {
           for (let i = 0; i < cols.length - 1; i += 2) {
-            const clave = $(cols[i]).text().replace(/\s+/g, " ").trim().replace(/:$/, "");
-            const valor = $(cols[i + 1]).text().replace(/\s+/g, " ").trim();
+            const clave = $(cols[i])
+              .text()
+              .replace(/\s+/g, " ")
+              .trim()
+              .replace(/:$/, "");
+            const valor = $(cols[i + 1])
+              .text()
+              .replace(/\s+/g, " ")
+              .trim();
             if (clave && valor) ficha[clave] = valor;
           }
         }
@@ -131,7 +151,10 @@ function extraerDeTablas($: cheerio.CheerioAPI, ficha: Record<string, string>) {
   });
 }
 
-function extraerDeDefiniciones($: cheerio.CheerioAPI, ficha: Record<string, string>) {
+function extraerDeDefiniciones(
+  $: cheerio.CheerioAPI,
+  ficha: Record<string, string>
+) {
   $("dt").each((_, dt) => {
     const dd = $(dt).next("dd");
     if (dd.length) {
@@ -142,7 +165,10 @@ function extraerDeDefiniciones($: cheerio.CheerioAPI, ficha: Record<string, stri
   });
 }
 
-function extraerDeNegritas($: cheerio.CheerioAPI, ficha: Record<string, string>) {
+function extraerDeNegritas(
+  $: cheerio.CheerioAPI,
+  ficha: Record<string, string>
+) {
   $("strong, b").each((_, el) => {
     const texto = $(el).text().trim().replace(/:$/, "");
     if (texto.length <= 2 || texto.length >= 50) return;
@@ -164,7 +190,9 @@ function extraerDeNegritas($: cheerio.CheerioAPI, ficha: Record<string, string>)
  * Además calcula qué campos "esperables" no se encontraron, para que
  * el administrador los revise manualmente antes de publicar la pieza.
  */
-export async function scrapearSurdoc(url: string): Promise<ResultadoPrescrapper> {
+export async function scrapearSurdoc(
+  url: string
+): Promise<ResultadoPrescrapper> {
   const respuesta = await fetch(url, {
     headers: { "User-Agent": USER_AGENT },
     // SURDOC cambia poco: evitamos cachear resultados obsoletos entre pruebas
